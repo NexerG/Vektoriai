@@ -16,7 +16,7 @@
 - clear ištuština konteinerį
 - begin grąžina iteratorių pirmam elementui
 - end grąžina iteratorių paskutiniam elementui
-- 
+
 | custom vector| std vector | kiekis(int) |
 |--------|--------|-------|
 | 0ms | 3ms | 10 000|
