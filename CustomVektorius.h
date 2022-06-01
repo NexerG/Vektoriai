@@ -67,7 +67,7 @@ private:
 
 
 template<typename T>
-class vector
+class Customvector
 {
 private:
     T* Data = nullptr;
@@ -77,15 +77,15 @@ private:
 
 public:
     using ValueType = T;
-    using Iterator = VectorIterator<vector<T>>;
-    vector() //constructor
+    using Iterator = VectorIterator<Customvector<T>>;
+    Customvector() //constructor
     {
         ReAlloc(sizeof(ValueType));
     }
 
-    ~vector() { delete[] Data; }//destructor
+    ~Customvector() { delete[] Data; }//destructor
 
-    vector& operator=(const vector& a)//operator=
+    Customvector& operator=(const Customvector& a)//operator=
     {
         if (this == &a)
         {
@@ -93,12 +93,12 @@ public:
         }
         this->capacity = a.capacity;
         ReAlloc(capacity);
-        memcpy(this->Data, a.Data, a.capacity*sizeof(ValueType));
+        memcpy(this->Data, a.Data, a.size*sizeof(ValueType));
 
         return *this;
     }
 
-    vector(const vector& value)
+    Customvector(const Customvector& value)
     {
         *this = value;
     }
@@ -107,7 +107,7 @@ public:
     {
         if (size >= capacity)
         {
-            ReAlloc(capacity * sizeof(ValueType));
+            ReAlloc(size * sizeof(ValueType));
         }
 
         Data[size] = value;
